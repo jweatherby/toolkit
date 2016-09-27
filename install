@@ -1,4 +1,7 @@
 #!/bin/bash
 
 THIS_DIR=`pwd`
-echo "source `pwd`/vimrc" > ~/.vimrc
+
+ln -sf $THIS_DIR/vimrc ~/.vimrc
+ln -sf $THIS_DIR/tmux.conf ~/.tmux.conf
+
