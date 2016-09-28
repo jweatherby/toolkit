@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Get $CURR_DIR from script I wrote:
+. read_dir
+
+echo $CURR_DIR
+
+DEFAULT_DB=batcave
+echo -n "Enter a db to use (default 'batcave'): "
+read DB
+
+if [ ! $DB ]; then
+    DB=$DEFAULT_DB
+fi
+
+DATE=$(date +'%Y%m%d')
+DB_DUMP="$DB-postgres-$DATE.dmp"
+if [ ! -f $CURR_DIR/$DB_DUMP ]; then
+    scp gdev@torecompg03.gadventures.internal:/backup/main/ecom/TORECOMPG03/$DB_DUMP $CURR_DIR/.
+else
+    echo "Found $CURR_DIR/$DB_DUMP already"
+fi
+
+dropdb $DB
+createdb $DB
+CMD="pg_restore -d $DB -v $CURR_DIR/$DB_DUMP"
+echo "Running: $CMD"
+$CMD

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+tmux new -d -s "$1"
+tmux splitw -h
+tmux splitw -h -t 0
+tmux resize-pane -t 2 -R 30
+tmux splitw -v -t 0
+tmux -2 attach-session -d

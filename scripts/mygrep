@@ -1,0 +1,43 @@
+#!/bin/bash
+
+flags=""
+extension="py"
+search_term=""
+verbose=""
+
+help_str="\n\tmygrep [-f|--flags flags] [-v|--verbose] [-x|--ext extension]\n"
+
+if [ $# -eq 0 ]; then
+    echo -e $help_str
+    exit 0
+fi
+
+while test $# -gt 0; do
+    case "$1" in
+        -h|--help )
+            echo -e $help_str 
+            exit 0 
+        ;;
+        -f|--flags )
+            flags="-$2"
+            shift 2 
+        ;;
+        -x|--ext )
+            extension=$2
+            shift 2 
+        ;;
+        -v|--verbose )
+            verbose='true'
+            shift
+        ;;
+        *)
+            search_term="$1"
+            shift 
+        ;;
+    esac
+done
+
+grep_cmd="grep $flags \"$search_term\" "
+find_cmd="find . -name \*.$extension" 
+
+eval $grep_cmd $(eval $find_cmd)

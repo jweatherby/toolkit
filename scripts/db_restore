@@ -1,0 +1,6 @@
+#!/bin/bash
+psql -c "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'batcave' AND pid <> pg_backend_pid();"
+psql -c "drop database batcave;"
+psql -c "create database batcave;"
+pg_restore -v -d batcave ~/Downloads/batcave-postgres-20150525.dmp
+

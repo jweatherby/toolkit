@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# file to read in a directory and then export that
+# variable to use by other scripts
+
+if [ "$CURR_DIR" ]; then
+    echo -n "Download to '$CURR_DIR'? (Y/n) "
+    read USE_DIR
+fi
+
+while [ -z $CURR_DIR ] || [ "$USE_DIR" ==  "n" ] || [ ! -d $CURR_DIR ]
+do
+   USE_DIR=false
+   echo -n "Enter where you'd like to download to: "
+   read CURR_DIR
+    if [ ! -d $CURR_DIR ]; then
+        echo "$CURR_DIR does not exist. Please try again."
+    fi
+done
+
+
+echo "Using $CURR_DIR"
+
+export CURR_DIR=$CURR_DIR

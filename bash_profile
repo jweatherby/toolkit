@@ -7,7 +7,7 @@ export PATH=$PATH:$HOME/scripts
 export WORKON_HOME=$HOME/Code/.virtualenvs
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
-source ~/.set_ps1.sh
+source ~/.set_ps1
 ### Development Paths ###
 DEV_ROOT=$HOME/Code/work
 WWW_ROOT=$DEV_ROOT/gadv

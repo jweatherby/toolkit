@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Usage: img_sync <folder_name>"
+    exit 0
+fi
+
+CURR_DIR=${PWD##*/}
+
+if [ "$CURR_DIR" !=  "gapadventures" ]; then
+    echo "You should be inside the repo at /path/to/gadventures.com/gapadventures"
+    exit 0
+fi
+
+FOLDER=$1
+
+rsync -av --delete gdev@tordcmedia:/var/www/www.gapadventures.com/gapadventures/media-server/$FOLDER/ ./media-server/$FOLDER --exclude=passport --exclude=background-checks --exclude=triplog_files --exclude=sherpa --exclude=reports --exclude=looptail --exclude=brochures --exclude=offline-maps --exclude=itinerary-pdfs
