@@ -4,4 +4,7 @@ THIS_DIR=`pwd`
 
 ln -sf $THIS_DIR/vimrc ~/.vimrc
 ln -sf $THIS_DIR/tmux.conf ~/.tmux.conf
+ln -sf $THIS_DIR/bash_profile ~/.bash_profile
+ln -sf $THIS_DIR/agignore ~/.agignore
 
+source ~/.bash_profile
