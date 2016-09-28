@@ -2,7 +2,22 @@
 
 THIS_DIR=`pwd`
 
-declare -a VIM_REPOS=("https://github.com/rking/ag.vim"  "https://github.com/ctrlpvim/ctrlp.vim"  "https://github.com/scrooloose/syntastic"  "https://github.com/mkitt/tabline.vim"  "https://github.com/bling/vim-airline"  "https://github.com/Chiel92/vim-autoformat"  "https://github.com/tpope/vim-fugitive"  "http://github.com/airblade/vim-gitgutter"  "https://github.com/pangloss/vim-javascript"  "https://github.com/maksimr/vim-jsbeautify"  "https://github.com/einars/js-beautify"  "https://github.com/christoomey/vim-tmux-navigator"  "https://github.com/jmcantrell/vim-virtualenv")
+VIM_REPOS=(
+    "https://github.com/rking/ag.vim"
+    "https://github.com/ctrlpvim/ctrlp.vim"
+    "https://github.com/scrooloose/syntastic"
+    "https://github.com/mkitt/tabline.vim"
+    "https://github.com/bling/vim-airline"
+    "https://github.com/Chiel92/vim-autoformat"
+    "https://github.com/tpope/vim-fugitive"
+    "http://github.com/airblade/vim-gitgutter"
+    "https://github.com/pangloss/vim-javascript"
+    "https://github.com/maksimr/vim-jsbeautify"
+    "https://github.com/einars/js-beautify"
+    "https://github.com/christoomey/vim-tmux-navigator"
+    "https://github.com/jmcantrell/vim-virtualenv"
+    "https://github.com/FelikZ/ctrlp-py-matcher"
+)
 
 echo $VIM_REPOS
 
@@ -16,18 +31,16 @@ ln -sf $THIS_DIR/scripts ~/scripts
 
 for vr in ${VIM_REPOS[@]} ;
 do
-    echo $vr
     vr_name=`echo $vr | sed -E 's/.*\/([^\/]+)$/\1/'`
-    echo $vr_name
     cd ~/.vim/bundle/
-    if [ -d $vr_name ]
+    if [ ! -d $vr_name ]
     then
-        cd $vr_name ; git pull
-    else
         echo "Cloning $vr into $vr_name"
         git clone $vr
+    else
+        echo "Updating $vr_name"
+        cd $vr_name ; git pull
     fi
 done ;
-
 
 source ~/.bash_profile
