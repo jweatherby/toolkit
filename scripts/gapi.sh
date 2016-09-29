@@ -23,10 +23,10 @@ fi
 
 if [ "$env" = "live" ]; then
     echo "WARNING: Using gapi LIVE (production)" 1>&2
-    CONFIG_KEY=""
+    CONFIG_KEY=$GAPI_LIVE_KEY
 else
     echo "Using gapi TEST (sandbox)" 1>&2
-    CONFIG_KEY=""
+    CONFIG_KEY=$GAPI_DEV_KEY
 fi
 
 if [ "$env" = "local" ]; then
