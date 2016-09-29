@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" ]
+then
+    R_CHAR=$1
+else
+    R_CHAR=""
+fi
+
+while read ; do
+    echo "mv $f ${f// /$R_CHAR}"
+done
