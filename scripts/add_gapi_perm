@@ -38,11 +38,12 @@ else
     gapi_url="http://127.0.0.1:5000"
 fi
 
-PERM_DATA='{"permissions": "'$RESOURCE'": "'$PERM_TYPE'"}'
+PERM_DATA='{"permissions": {"'$RESOURCE'": "'$PERM_TYPE'"}}'
 echo $PERM_DATA
 
 echo "$GAPI_KEY : $PERM_DATA"
 
-CMD="curl -X POST https://rest.gadventures.com -H \"X-Application-Key: $GAPI_KEY\" \
+CMD="curl -X PATCH https://rest.gadventures.com/permissions/$GAPI_KEY -H \"X-Application-Key: $GAPI_KEY\" \
     -H \"Content-Type: application/json\" -d '$PERM_DATA'"
-echo $CMD
+echo "$CMD"
+eval $CMD
