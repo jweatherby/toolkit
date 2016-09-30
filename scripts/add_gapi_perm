@@ -1,0 +1,48 @@
+#!/bin/bash
+
+usage() { echo "Usage $0 [-e <local|live|test>] <gapi_resource>:<permission_level>" 1>&2; exit 1; }
+
+while getopts ":e:" o; do
+    case "${o}" in
+        e)
+            env=${OPTARG}
+            shift 2;
+            ;;
+        *)
+            usage
+            ;;
+    esac
+
+done
+
+gapi_resource=$@
+
+if [ ! "$gapi_resource" ]; then
+    usage
+fi
+
+RESOURCE=`echo $gapi_resource | sed -E 's/^([^:]+):.*$/\1/'`
+PERM_TYPE=`echo $gapi_resource | sed -E 's/^[^:]+:(.*)$/\1/'`
+
+if [ "$env" = "live" ]; then
+    echo "WARNING: Using gapi LIVE (production)" 1>&2
+    GAPI_KEY=$GAPI_LIVE_KEY
+else
+    echo "Using gapi TEST (sandbox)" 1>&2
+    GAPI_KEY=$GAPI_DEV_KEY
+fi
+
+if [ "$env" = "local" ]; then
+    gapi_url="https://rest.gadventures.com"
+else
+    gapi_url="http://127.0.0.1:5000"
+fi
+
+PERM_DATA='{"permissions": "'$RESOURCE'": "'$PERM_TYPE'"}'
+echo $PERM_DATA
+
+echo "$GAPI_KEY : $PERM_DATA"
+
+CMD="curl -X POST https://rest.gadventures.com -H \"X-Application-Key: $GAPI_KEY\" \
+    -H \"Content-Type: application/json\" -d '$PERM_DATA'"
+echo $CMD
