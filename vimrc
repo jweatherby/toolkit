@@ -1,3 +1,4 @@
+
 filetype off
 "pathogen"
 execute pathogen#infect()
@@ -5,7 +6,7 @@ execute pathogen#infect()
 "vim"
 syntax on
 filetype plugin indent on
-
+set nocompatible
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
