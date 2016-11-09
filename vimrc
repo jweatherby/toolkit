@@ -1,4 +1,3 @@
-
 filetype off
 "pathogen"
 execute pathogen#infect()
@@ -79,7 +78,6 @@ let g:airline_powerline_fonts=1
 
 "disable git-gutter from showing"
 let g:airline#extensions#hunks#enabled=0
-
 
 set statusline=%f       "filename
 set statusline+=\ %{fugitive#statusline()} "git indicator

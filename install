@@ -29,6 +29,8 @@ ln -sf $THIS_DIR/set_ps1 ~/.set_ps1
 ln -sf $THIS_DIR/git-prompt.sh ~/.git-prompt.sh
 ln -sf $THIS_DIR/scripts ~/scripts
 
+chmod u+x $THIS_DIR/scripts/*
+
 for vr in ${VIM_REPOS[@]} ;
 do
     vr_name=`echo $vr | sed -E 's/.*\/([^\/]+)$/\1/'`
@@ -36,7 +38,7 @@ do
     if [ ! -d $vr_name ]
     then
         echo "Cloning $vr into $vr_name"
-        git clone $vr
+        git clone --recursive $vr
     else
         echo "Updating $vr_name"
         cd $vr_name ; git pull

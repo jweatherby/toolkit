@@ -1,8 +1,17 @@
 # Bash profile #
-alias vin='vim -c "NERDTree" $1'
 # Add my own scripts #
+
+# General config settings
+export ARCHFLAGS="-arch x86_64"
+export PATH=/usr/local/bin:$PATH
+test -f ~/.bashrc && source ~/.bashrc
+
+# Root pythonpath
+PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+
 export PATH=$PATH:$HOME/scripts
 
+alias vin='vim -c "NERDTree" $1'
 ### Virtualenv ###
 export WORKON_HOME=$HOME/Code/.virtualenvs
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
