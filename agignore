@@ -2,3 +2,6 @@ locale
 media-server
 shared-media
 _CACHE
+node_modules
+fixtures
+*.min.js

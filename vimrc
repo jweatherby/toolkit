@@ -34,6 +34,8 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
 cabbr <expr> _d expand('%:h')
 cabbr <expr> _f @%
 
