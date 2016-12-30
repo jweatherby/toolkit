@@ -28,7 +28,8 @@ set laststatus=2
 set number
 set undofile
 set path+=**
-set wildignore=*.swp,*.bak,*.pyc,*.class,*/node_modules/*,*/shared-media/*,*/media-server/*,*.svg,*.jpg,*.png,*.jpeg,*/locale/*
+set splitright
+set wildignore=*.swp,*.bak,*.pyc,*.class,*/node_modules/*,*/shared-media/*,*/media-server/*,*.svg,*.jpg,*.png,*.jpeg,*/locale/*,*.log
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
