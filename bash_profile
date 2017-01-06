@@ -6,6 +6,11 @@ export ARCHFLAGS="-arch x86_64"
 export PATH=/usr/local/bin:$PATH
 test -f ~/.bashrc && source ~/.bashrc
 
+# Locale settings
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+export LANGUAGE=C.UTF-8
+
 # Root pythonpath
 PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 
