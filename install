@@ -12,6 +12,7 @@ VIM_REPOS=(
     "https://github.com/tpope/vim-fugitive"
     "http://github.com/airblade/vim-gitgutter"
     "https://github.com/pangloss/vim-javascript"
+    "https://github.com/mxw/vim-jsx"
     "https://github.com/maksimr/vim-jsbeautify"
     "https://github.com/einars/js-beautify"
     "https://github.com/christoomey/vim-tmux-navigator"
