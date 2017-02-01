@@ -1,0 +1,10 @@
+if [[ $# -eq 0 ]] ; then
+    echo "Usage: 'rm-spaces \*<pattern>'. I.e. 'rm-spaces \*mkv'"
+    exit 1
+fi
+
+find . -iname '$1' | while read file
+do
+    newfile=`echo "$file" | sed -e 's/ /-/g'`
+    echo "$file" "$newfile"
+done

@@ -5,7 +5,7 @@ THIS_DIR=`pwd`
 VIM_REPOS=(
     "https://github.com/rking/ag.vim"
     "https://github.com/ctrlpvim/ctrlp.vim"
-    "https://github.com/scrooloose/syntastic"
+    "https://github.com/w0rp/ale"
     "https://github.com/mkitt/tabline.vim"
     "https://github.com/bling/vim-airline"
     "https://github.com/Chiel92/vim-autoformat"
@@ -28,7 +28,9 @@ ln -sf $THIS_DIR/bash_profile ~/.bash_profile
 ln -sf $THIS_DIR/agignore ~/.agignore
 ln -sf $THIS_DIR/set_ps1 ~/.set_ps1
 ln -sf $THIS_DIR/git-prompt.sh ~/.git-prompt.sh
-ln -sf $THIS_DIR/scripts ~/scripts
+
+if [ -d ~/scripts ]; then mkdir ~/scripts ; fi
+cp -rip $THIS_DIR/scripts/* ~/scripts
 
 chmod u+x $THIS_DIR/scripts/*
 

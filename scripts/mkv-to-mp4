@@ -1,0 +1,8 @@
+find . -iname "echo $1" | while read file
+do
+    newfile=`echo "$file" | sed -E 's/\.[^\.]+$/.mp4/g'`
+    echo "transferring $file to $newfile"
+    echo "ffmpeg -i $file -vcodec copy -acodec copy $newfile"
+    echo "rm $file"
+done
+
