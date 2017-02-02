@@ -29,7 +29,7 @@ ln -sf $THIS_DIR/agignore ~/.agignore
 ln -sf $THIS_DIR/set_ps1 ~/.set_ps1
 ln -sf $THIS_DIR/git-prompt.sh ~/.git-prompt.sh
 
-if [ -d ~/scripts ]; then mkdir ~/scripts ; fi
+if [ ! -d ~/scripts ]; then mkdir ~/scripts ; fi
 cp -rip $THIS_DIR/scripts/* ~/scripts
 
 chmod u+x $THIS_DIR/scripts/*
