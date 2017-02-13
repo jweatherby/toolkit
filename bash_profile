@@ -73,3 +73,4 @@ alias dus='du -Psckx * | sort -nr'
 
 alias pretty='python -m json.tool'
 alias ngrok='/Applications/ngrok'
+alias filesize='du -sh'

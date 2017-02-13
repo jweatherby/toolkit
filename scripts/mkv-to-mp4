@@ -1,8 +1,8 @@
-find . -iname "echo $1" | while read file
+for file in *mkv
 do
-    newfile=`echo "$file" | sed -E 's/\.[^\.]+$/.mp4/g'`
-    echo "transferring $file to $newfile"
-    echo "ffmpeg -i $file -vcodec copy -acodec copy $newfile"
-    echo "rm $file"
+    newfile="${file/%.mkv/.mp4}"
+    cmd="ffmpeg -i $file -vcodec copy -acodec copy $newfile"
+    echo "Doing '$cmd'"
+    $cmd
 done
 

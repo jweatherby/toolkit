@@ -102,6 +102,7 @@ set statusline+=\ %P    "percent through file
 " E501: Line too long
 " F999: Syntax error in doctest
 " let g:ale_python_flake8_executable = '`which python`'
+let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\".\")'"
 let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999"
 " PyLint ignores
 " C0301: Line too long
