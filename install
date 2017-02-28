@@ -13,11 +13,13 @@ VIM_REPOS=(
     "http://github.com/airblade/vim-gitgutter"
     "https://github.com/pangloss/vim-javascript"
     "https://github.com/mxw/vim-jsx"
+    "https://github.com/mrkschan/vim-node-jslint"
     "https://github.com/maksimr/vim-jsbeautify"
     "https://github.com/einars/js-beautify"
     "https://github.com/christoomey/vim-tmux-navigator"
     "https://github.com/jmcantrell/vim-virtualenv"
     "https://github.com/FelikZ/ctrlp-py-matcher"
+    "https://github.com/chase/vim-ansible-yaml"
 )
 
 echo $VIM_REPOS
