@@ -2,7 +2,7 @@ filetype off
 "pathogen"
 execute pathogen#infect()
 let &runtimepath.=',~/.vim/bundle/ale'
-silent! helptags ALL
+silent! helpags ALL
 
 "vim"
 syntax on
@@ -38,6 +38,8 @@ let g:ctrlp_prompt_mappings = {
     \ }
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+nnoremap <leader>. :CtrlPTag<cr>
+set tags+=/usr/local/lib/*/tags
 
 let g:tmux_navigator_move_out_of_zoomed_tmux = 2
 
@@ -120,3 +122,10 @@ let g:ale_python_pylint_options = '--msg-template="{path}:{line}:{column}:{C}: [
 "--msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --disable=C0301,W0142,C010v3"
 " autocmd FileType python SyntasticCheck
 " let g:syntastic_loc_list_height=3
+
+" ACK.vim
+
+let g:ackprg = "ag --vimgrep"
+let g:ack_autoclose = 1
+let g:ack_autofold_results = 0
+cnoreabbrev ag Ack!
