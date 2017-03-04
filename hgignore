@@ -5,3 +5,4 @@ _CACHE
 node_modules
 fixtures
 *.min.js
+*.log

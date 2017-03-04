@@ -2,7 +2,7 @@ filetype off
 "pathogen"
 execute pathogen#infect()
 let &runtimepath.=',~/.vim/bundle/ale'
-silent! helptags ALL
+silent! helpags ALL
 
 "vim"
 syntax on
@@ -38,6 +38,8 @@ let g:ctrlp_prompt_mappings = {
     \ }
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+nnoremap <leader>. :CtrlPTag<cr>
+set tags+=/usr/local/lib/*/tags
 
 let g:tmux_navigator_move_out_of_zoomed_tmux = 2
 
@@ -102,8 +104,6 @@ set statusline+=\ %P    "percent through file
 " E501: Line too long
 " F999: Syntax error in doctest
 " let g:ale_python_flake8_executable = '`which python`'
-let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\".\")'"
-let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999"
 " PyLint ignores
 " C0301: Line too long
 " C0103: Invalid name ... for type argument (should match [a-z_][a-z0-9_]{2,30}$)
@@ -115,8 +115,15 @@ let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999"
 " W0232: no-init (no __init__ method)
 " R0903: too-few-public-methods (class Meta)
 " C0103: invalid variable name (single letter)
-let g:ale_python_pylint_executable = '`which python`'
-let g:ale_python_pylint_options = '--msg-template="{path}:{line}:{column}:{C}: [{msg_id}:{symbol}] {msg}" --disable=C0301,W0142,C010v3,C0412,W0403,E1101,C1001,W0232,R0903,C0111,C0103'
+let g:ale_python_pylint_options = '--disable=C0301,W0142,C010v3,C0412,W0403,E1101,C1001,W0232,R0903,C0111,C0103 --init-hook="import sys; sys.path.append(\".\")"'
+let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999"
 "--msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --disable=C0301,W0142,C010v3"
 " autocmd FileType python SyntasticCheck
 " let g:syntastic_loc_list_height=3
+
+" ACK.vim
+
+let g:ackprg = "ag --vimgrep"
+let g:ack_autoclose = 1
+let g:ack_autofold_results = 0
+cnoreabbrev ag Ack!
