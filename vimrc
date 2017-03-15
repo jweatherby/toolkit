@@ -123,6 +123,7 @@ let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999"
 
 " ACK.vim
 
+let g:ackprg = "ag"
 let g:ack_autoclose = 1
 let g:ack_autofold_results = 0
 cnoreabbrev ag Ack!
