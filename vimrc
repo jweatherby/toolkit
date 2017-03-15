@@ -87,7 +87,7 @@ let g:airline_powerline_fonts=1
 
 "disable git-gutter from showing"
 let g:airline#extensions#hunks#enabled=0
-
+let g:jsx_ext_required = 0
 set statusline=%f       "filename
 set statusline+=\ %{fugitive#statusline()} "git indicator
 set statusline+=\ %m    "modified flag
@@ -123,7 +123,6 @@ let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999"
 
 " ACK.vim
 
-let g:ackprg = "ag --vimgrep"
 let g:ack_autoclose = 1
 let g:ack_autofold_results = 0
 cnoreabbrev ag Ack!
