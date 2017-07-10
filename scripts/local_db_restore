@@ -13,7 +13,14 @@ if [ ! $DB ]; then
     DB=$DEFAULT_DB
 fi
 
-DATE=$(date +'%Y%m%d')
+DEFAULT_DATE=$(date +'%Y%m%d')
+echo -n "Enter a date to use (default '$DEFAULT_DATE'): "
+read DATE
+
+if [ ! $DATE ]; then
+    DATE=$DEFAULT_DATE
+fi
+
 DB_DUMP="$DB-postgres-$DATE.dmp"
 if [ ! -f $CURR_DIR/$DB_DUMP ]; then
     scp gdev@torecompg03.gadventures.internal:/backup/main/ecom/TORECOMPG03/$DB_DUMP $CURR_DIR/.

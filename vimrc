@@ -115,7 +115,7 @@ set statusline+=\ %P    "percent through file
 " W0232: no-init (no __init__ method)
 " R0903: too-few-public-methods (class Meta)
 " C0103: invalid variable name (single letter)
-let g:ale_python_pylint_options = '--disable=C0301,W0142,C010v3,C0412,W0403,E1101,C1001,W0232,R0903,C0111,C0103 --init-hook="import sys; sys.path.append(\".\")"'
+let g:ale_python_pylint_options = '--disable=C0301,W0142,C010v3,C0412,W0403,E1101,C1001,W0232,R0903,C0111,C0103"'
 let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999"
 "--msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --disable=C0301,W0142,C010v3"
 " autocmd FileType python SyntasticCheck
