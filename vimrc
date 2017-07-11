@@ -79,6 +79,10 @@ autocmd BufWritePre * :%s/\s\+$//e
 "nnoremap j gj
 "nnoremap k gk
 
+" toggle paste on cmd-v
+nmap <D-v> ^O:set paste<Enter>^R+^O:set nopaste<Enter>
+
+
 "powerline"
 set laststatus=2
 set t_Co=256
@@ -103,6 +107,7 @@ set statusline+=\ %P    "percent through file
 " E302: Expected 2 blank lines, found 1
 " E501: Line too long
 " F999: Syntax error in doctest
+" E0632: Possibly unbalanced tuple returned
 " let g:ale_python_flake8_executable = '`which python`'
 " PyLint ignores
 " C0301: Line too long
@@ -115,14 +120,16 @@ set statusline+=\ %P    "percent through file
 " W0232: no-init (no __init__ method)
 " R0903: too-few-public-methods (class Meta)
 " C0103: invalid variable name (single letter)
-let g:ale_python_pylint_options = '--disable=C0301,W0142,C010v3,C0412,W0403,E1101,C1001,W0232,R0903,C0111,C0103 --init-hook="import sys; sys.path.append(\".\")"'
-let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999"
+" R0901: too many ancestors
+let g:ale_python_pylint_options = '--disable=R0901,C0301,W0142,C010v3,C0412,W0403,E1101,C1001,W0232,R0903,C0111,C0103 --init-hook="import sys; sys.path.append(\".\")"'
+let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999,E0632"
 "--msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --disable=C0301,W0142,C010v3"
 " autocmd FileType python SyntasticCheck
 " let g:syntastic_loc_list_height=3
 
 " ACK.vim
 
+let g:ackprg = "ag --vimgrep"
 let g:ack_autoclose = 1
 let g:ack_autofold_results = 0
 cnoreabbrev ag Ack!
