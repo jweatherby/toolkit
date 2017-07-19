@@ -80,8 +80,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 "nnoremap k gk
 
 " toggle paste on cmd-v
-nmap <D-v> ^O:set paste<Enter>^R+^O:set nopaste<Enter>
-
+set clipboard=unnamed
+nnoremap <leader>y "*p
+vnoremap <leader>p "*y
 
 "powerline"
 set laststatus=2
