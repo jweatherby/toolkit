@@ -14,4 +14,16 @@ fi
 
 FOLDER=$1
 
-rsync -av --delete gdev@tordcmedia:/var/www/www.gapadventures.com/gapadventures/media-server/$FOLDER/ ./media-server/$FOLDER --exclude=passport --exclude=background-checks --exclude=triplog_files --exclude=sherpa --exclude=reports --exclude=looptail --exclude=brochures --exclude=offline-maps --exclude=itinerary-pdfs
+python manage.py sync_from_media_server --confirm\
+    production media-server/$FOLDER media-server/$FOLDER \
+    --exclude 'admin/offline-maps*' \
+    --exclude 'admin/brochures*' \
+    --exclude 'wateringhole*' \
+    --exclude 'sherpa*' \
+    --exclude 'looptail*' \
+    --exclude 'admin/itinerary-pdfs*' \
+    --exclude 'admin/pagespeed*' \
+    --exclude 'admin/triplog_files*' \
+    --exclude 'admin/reports*' \
+    --exclude 'admin/trip-editor/reports*'\
+    --delete
