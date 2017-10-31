@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source $WORKON_HOME/tmuxp/bin/activate
+tmuxp load $1
