@@ -21,6 +21,8 @@ VIM_REPOS=(
     "https://github.com/jmcantrell/vim-virtualenv"
     "https://github.com/FelikZ/ctrlp-py-matcher"
     "https://github.com/chase/vim-ansible-yaml"
+    "https://github.com/davidhalter/jedi-vim"
+    "https://github.com/ervandew/supertab"
 )
 
 echo $VIM_REPOS

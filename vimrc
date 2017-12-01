@@ -134,3 +134,7 @@ let g:ackprg = "ag --vimgrep"
 let g:ack_autoclose = 1
 let g:ack_autofold_results = 0
 cnoreabbrev ag Ack!
+
+let g:jedi#popup_on_dot = 0
+let g:jedi#use_tabs_not_buffers = 1
+autocmd FileType python setlocal completeopt-=preview
