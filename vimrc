@@ -32,16 +32,43 @@ set undofile
 set path+=**
 set splitright
 set wildignore=*.swp,*.bak,*.pyc,*.class,*/node_modules/*,*/shared-media/*,*/media-server/*,*.svg,*.jpg,*.png,*.jpeg,*/locale/*,*.log
+set mouse=a
+set lazyredraw
+set regexpengine=1
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-nnoremap <leader>. :CtrlPTag<cr>
-set tags+=/usr/local/lib/*/tags
 
 let g:tmux_navigator_move_out_of_zoomed_tmux = 2
+
+" Limelight (paragraph highlighting)
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+
 
 cabbr <expr> _d expand('%:h')
 cabbr <expr> _f @%
@@ -122,6 +149,12 @@ set statusline+=\ %P    "percent through file
 " R0903: too-few-public-methods (class Meta)
 " C0103: invalid variable name (single letter)
 " R0901: too many ancestors
+
+let g:ale_linters = {
+    \ 'javascript': ['eslint'],
+    \ 'python': ['pylint', 'flake8']
+\ }
+
 let g:ale_python_pylint_options = '--disable=R0901,C0301,W0142,C010v3,C0412,W0403,E1101,C1001,W0232,R0903,C0111,C0103 --init-hook="import sys; sys.path.append(\".\")"'
 let g:ale_python_flake8_args = "--ignore=E121,E127,E128,E302,E501,F999,E0632"
 "--msg-template='{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}' --disable=C0301,W0142,C010v3"

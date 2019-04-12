@@ -75,3 +75,6 @@ alias pretty='python -m json.tool'
 alias ngrok='/Applications/ngrok'
 alias filesize='du -sh'
 export PATH="/usr/local/opt/node@4/bin:$PATH"
+
+alias to-gif='ffmpeg -i $1  -s 600x400 -pix_fmt rgb24 -r 10 -f gif'
+export PATH="/usr/local/opt/node@8/bin:$PATH"

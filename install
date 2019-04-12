@@ -22,7 +22,8 @@ VIM_REPOS=(
     "https://github.com/FelikZ/ctrlp-py-matcher"
     "https://github.com/chase/vim-ansible-yaml"
     "https://github.com/davidhalter/jedi-vim"
-    "https://github.com/ervandew/supertab"
+    "https://github.com/plasticboy/vim-markdown"
+    "https://github.com/junegunn/limelight.vim"
 )
 
 echo $VIM_REPOS
