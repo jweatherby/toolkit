@@ -34,14 +34,14 @@ chmod u+x $THIS_DIR/scripts/*
 for vr in ${VIM_REPOS[@]} ;
 do
     vr_name=`echo $vr | sed -E 's/.*\/([^\/]+)$/\1/'`
-    cd ~/.vim/bundle/
+    VIM_PATH=~/.vim/bundle
     if [ ! -d $vr_name ]
     then
         echo "Cloning $vr into $vr_name"
-        git clone --recursive $vr
+        git clone --recursive $vr $VIM_PATH/$vr_name
     else
         echo "Updating $vr_name"
-        cd $vr_name ; git pull
+        cd $VIM_PATH/$vr_name ; git pull
     fi
 done ;
 

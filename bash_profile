@@ -1,7 +1,5 @@
 PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin
 
-source ~/.set_ps1.sh
-
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 export LC_ALL=en_US.UTF-8
