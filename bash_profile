@@ -1,80 +1,21 @@
-# Bash profile #
-# Add my own scripts #
+PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin
 
-# General config settings
-export ARCHFLAGS="-arch x86_64"
-export PATH=/usr/local/bin:$PATH
-test -f ~/.bashrc && source ~/.bashrc
+source ~/.set_ps1.sh
 
-# Locale settings
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
 
-# Root pythonpath
-PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+export CI_REGISTRY=registry.points.com
+export CI_REGISTRY_USER=jweatherby
+export CI_REGISTRY_PASSWORD=PxYz5azkdajXUvuwv1RL
 
-export PATH=$PATH:$HOME/scripts
+alias dlogin="docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+alias restartdns="docker restart \$(docker ps --filter 'name=dns' -q)"
 
-alias vin='vim -c "NERDTree" $1'
-### Virtualenv ###
-export WORKON_HOME=$HOME/Code/.virtualenvs
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
-source ~/.set_ps1
-
-### Development Paths ###
-DEV_ROOT=$HOME/Code/work
-WWW_ROOT=$DEV_ROOT/gadv
-MEDIA_ROOT=$WWW_ROOT/gapadventures/media-server
-SASS_PATH=
-declare -a G_PROJECTS=('gadventures.1.8.com' 'gadventures')
-for G_PROJ in "${G_PROJECTS[@]}"; do
-	TMP_MEDIA=$DEV_ROOT/$G_PROJ/gapadventures/media-server
-	export SASS_PATH=$SASS_PATH:$TMP_MEDIA/:$TMP_MEDIA/common/:$TMP_MEDIA/compass-css/:$TMP_MEDIA/static/
-done
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-### General commands ###
-alias cleanpyc='find . -name "*.pyc" -delete'
-
-# G Adventures #
-alias update_index='w_www;./manage.py update_trips_index --loglevel=INFO'
-alias run_server='w_www;./manage.py runserver 0.0.0.0:8000'
-alias collect_static='w_www;./manage.py collectstatic --noinput --link'
-alias dynamic_media='rsync -av --delete  gdev@tordcmedia:/var/www/www.gapadventures.com/gapadventures/media-server/dynamic/ $WWW_ROOT/gapadventures/media-server/dynamic --exclude=passport --exclude=background-checks --exclude=triplog_files --exclude=sherpa --exclude=reports --exclude=looptail --exclude=brochures --exclude=offline-maps'
-alias img_lib_sync='rsync -av --delete  gdev@tordcmedia:/var/www/www.gapadventures.com/gapadventures/media-server/image_library/ $WWW_ROOT/gapadventures/media-server/image_library --exclude=passport --exclude=background-checks --exclude=triplog_files --exclude=sherpa --exclude=reports --exclude=looptail --exclude=brochures --exclude=offline-maps'
-alias jsmessages='django-admin.py makemessages -l de -d djangojs --ignore=media-server/static/* --ignore=media-server/admin/*'
-alias makemessages='django-admin.py makemessages -l de --ignore=media-server/static/* --ignore=media-server/admin/*'
-
-# ecomm-devops #
-alias devops='cd $DEV_ROOT/ecomm-devops/; workon devops'
-alias db_restore='devops; fab local postgres_master_restore --host=localhost'
-
-# G-API
-alias run_gapi='cd $DEV_ROOT/gapi-layer;workon gapi-layer;export GAPI_CONFIG=gapi.localconfig.LocalConfig; python gapi/app.py'
-alias run_gapiweb='cd $HOME/domains/gapi-web.git;workon gapi-web; ./manage.py runserver 9000'
-alias make_gapi_docs='cd gapi_docs; sphinx-build -E -b html -d _build/doctrees . _build/html; cd ..'
-
-# Git
-alias status='git status'
-alias gdiff='git diff --color --ignore-space-at-eol'
-
-# Searching (ack)
-alias ackpy='ack --python --js --html --css --type-set scss=.scss --scss --ignore-dir=migrations --ignore-dir=vendor --ignore-dir=_CACHE --ignore-dir=node_modules --ignore-dir=dynamic'
-
-# Misc
-alias broken_symlinks='find -L . -type l'
-alias latest='cat `ls -t | head -1`'
-alias manage='workon gadventures; cd $WWW_ROOT; ./manage.py shell_plus --ptpython --vi'
-alias restart_dnsmasq='sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist ; sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist'
-alias codeps='enscript -G1rjE --color -o -'
-alias dus='du -Psckx * | sort -nr'
-
-alias pretty='python -m json.tool'
-alias ngrok='/Applications/ngrok'
-alias filesize='du -sh'
-export PATH="/usr/local/opt/node@4/bin:$PATH"
-
-alias to-gif='ffmpeg -i $1  -s 600x400 -pix_fmt rgb24 -r 10 -f gif'
-export PATH="/usr/local/opt/node@8/bin:$PATH"
