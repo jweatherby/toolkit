@@ -9,13 +9,12 @@ VIM_REPOS=(
     "https://github.com/mxw/vim-jsx"
     "https://github.com/bling/vim-airline"
     "https://github.com/tpope/vim-fugitive"
-    "https://github.com/tpope/fugitive-gitlab.vim"
     "https://github.com/airblade/vim-gitgutter"
     "https://github.com/christoomey/vim-tmux-navigator"
     "https://github.com/davidhalter/jedi-vim"
 )
 
-echo $VIM_REPOS
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 
 # basic configs
 ln -sf $THIS_DIR/vimrc ~/.vimrc
@@ -35,7 +34,8 @@ for vr in ${VIM_REPOS[@]} ;
 do
     vr_name=`echo $vr | sed -E 's/.*\/([^\/]+)$/\1/'`
     VIM_PATH=~/.vim/bundle
-    if [ ! -d $vr_name ]
+    echo "Cloning into $vr_name"
+    if [ ! -d "$VIM_PATH/$vr_name" ]
     then
         echo "Cloning $vr into $vr_name"
         git clone --recursive $vr $VIM_PATH/$vr_name
