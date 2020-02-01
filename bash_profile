@@ -15,13 +15,6 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-export CI_REGISTRY=registry.points.com
-export CI_REGISTRY_USER=jweatherby
-export CI_REGISTRY_PASSWORD=PxYz5azkdajXUvuwv1RL
-
-alias dlogin="docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
-alias restartdns="docker restart \$(docker ps --filter 'name=dns' -q)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
