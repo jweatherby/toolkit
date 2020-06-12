@@ -15,12 +15,16 @@ VIM_REPOS=(
 )
 
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 
 # basic configs
 ln -sf $THIS_DIR/vimrc ~/.vimrc
 ln -sf $THIS_DIR/tmux.conf ~/.tmux.conf
-ln -sf $THIS_DIR/bashrc ~/.bashrc
+ln -sf $THIS_DIR/bash_profile ~/.bash_profile
 ln -sf $THIS_DIR/bash_local ~/.bash_local
+ln -sf $THIS_DIR/bashrc ~/.bashrc
 ln -sf $THIS_DIR/hgignore ~/.hgignore
 ln -sf $THIS_DIR/set_ps1 ~/.set_ps1
 ln -sf $THIS_DIR/git-prompt.sh ~/.git-prompt.sh
@@ -57,4 +61,4 @@ else
 fi
 
 source $THIS_DIR/git.config
-source ~/.bashrc
+source ~/.bash_profile
