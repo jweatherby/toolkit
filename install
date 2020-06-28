@@ -60,5 +60,9 @@ else
     cd ~/.tmux/plugins/tpm ; git pull
 fi
 
+# personal scripts
+
+ln -sf $THIS_DIR/scripts ~/.my-scripts
+
 source $THIS_DIR/git.config
 source ~/.bash_profile
